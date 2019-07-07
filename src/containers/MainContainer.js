@@ -32,11 +32,6 @@ class MainContainer extends Component {
     }
   }
 
-  //----------------SORT STOCKS Alphabetically OR BY PRICE
-  handleSortStocks = (value) => {
-    console.log(this.state.filterValue);
-  }
-
   //----------------FILTER STOCKS BY TYPE
   handleFilterStocks = (value) => {
     this.setState({
@@ -52,6 +47,32 @@ class MainContainer extends Component {
     console.log(this.state.filteredStocks);
 
   }
+
+  //----------------SORT STOCKS Alphabetically OR BY PRICE
+  handleSortStocks = (value) => {
+    const arr = [...this.state.stocks]
+
+//-------Alphabetically----------------------------
+////////////CAN SORT IN REVERSE ORDER BUT NOT Alphabetically
+    if(value==="Alphabetically"){
+      debugger
+        const sortedArr = arr.sort((a, b)=> {
+          console.log(a.name + "------- " + b.name);
+          return a.name > b.name ? -1: 1
+
+      })
+      console.log(sortedArr);
+      this.setState({stocks: sortedArr})
+
+//-------BY PRICE-------------------------
+} else if(value==="Price"){
+        const priceArr = arr.sort((a, b)=>{
+          return a.price > b.price ? 1: -1
+        })
+        this.setState({stocks:priceArr})
+}
+  }
+
 
   //----------------FETCH ARRAY OF STOCKS AND ADD TO STATE IN STOCKS AND UNFILTERED STOCK ARRAYS-------------------------
 
