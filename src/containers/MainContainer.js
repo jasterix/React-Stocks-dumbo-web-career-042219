@@ -6,7 +6,15 @@ import SearchBar from '../components/SearchBar'
 class MainContainer extends Component {
 
   state= {
-    stocks: []
+    stocks: [],
+    portfolio: []
+  }
+
+  handleAddToPortfolio = (stock) => {
+
+    console.log(this.state.portfolio);
+    this.setState({portfolio: [...this.state.portfolio, stock]})
+    debugger
   }
 
 componentDidMount() {
@@ -17,7 +25,6 @@ componentDidMount() {
   })
 }
   render() {
-    // console.log(this.state);
 
     return (
       <div>
@@ -26,12 +33,13 @@ componentDidMount() {
           <div className="row">
             <div className="col-8">
 
-              <StockContainer stocks={this.state.stocks} />
+              <StockContainer stocks={this.state.stocks} addToPortfolio={this.handleAddToPortfolio}/>
 
             </div>
             <div className="col-4">
 
-              <PortfolioContainer stocks={this.state.stocks} />
+              <PortfolioContainer portfolio={this.state.portfolio}
+                 stocks={this.state.stocks} />
 
             </div>
           </div>
