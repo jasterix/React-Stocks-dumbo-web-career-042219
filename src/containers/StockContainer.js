@@ -8,7 +8,12 @@ class StockContainer extends Component {
   render() {
     console.log(this.props);
     let stocks = this.props.stocks.map(stock=> (
-      <Stock key={stock.id} stock={stock} addToPortfolio={this.props.addToPortfolio}/>
+      <Stock
+        key={stock.id}
+        stock={stock}
+        addToPortfolio={this.props.addToPortfolio}
+        
+        />
     ))
 
     return (

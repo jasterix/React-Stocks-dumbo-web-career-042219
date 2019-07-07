@@ -12,13 +12,18 @@ class MainContainer extends Component {
 
   handleAddToPortfolio = (stock) => {
     // console.log(this.state.portfolio);
-    this.setState({portfolio: [...this.state.portfolio, stock]})
+    return this.setState({portfolio: [...this.state.portfolio, stock]})
     // debugger
   }
 
-  removeStock=(stockObj)=> {
-    // let remove = this.state.portfolio.filter(stock=>stock.id !== stockObj.id)
-    //
+  handleSellStocks=(stockObj)=> {
+    let currentPortolio = [...this.state.portfolio]
+    let index = currentPortolio.indexOf(stockObj)
+
+    if(index !== -1) {
+      currentPortolio.splice(index, 1)
+      this.setState({portfolio: currentPortolio})
+    }
   }
 
 componentDidMount() {
@@ -42,8 +47,11 @@ componentDidMount() {
             </div>
             <div className="col-4">
 
-              <PortfolioContainer portfolio={this.state.portfolio}
-                 stocks={this.state.stocks} />
+              <PortfolioContainer
+                portfolio={this.state.portfolio}
+                stocks={this.state.stocks}
+                sellStocks={this.handleSellStocks}
+                 />
 
             </div>
           </div>
