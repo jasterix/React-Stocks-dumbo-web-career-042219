@@ -7,24 +7,39 @@ class MainContainer extends Component {
 
   state= {
     stocks: [],
-    portfolio: []
+    portfolio: [],
+    unfilteredStocks: [],
+    filterValue: "",
+    filteredStocks: []
   }
 
   handleAddToPortfolio = (stock) => {
-    // console.log(this.state.portfolio);
     return this.setState({portfolio: [...this.state.portfolio, stock]})
-    // debugger
   }
 
   handleSellStocks=(stockObj)=> {
-    let currentPortolio = [...this.state.portfolio]
-    let index = currentPortolio.indexOf(stockObj)
+    let currentPortfolio = [...this.state.portfolio]
+    let index = currentPortfolio.indexOf(stockObj)
 
     if(index !== -1) {
-      currentPortolio.splice(index, 1)
-      this.setState({portfolio: currentPortolio})
+      currentPortfolio.splice(index, 1)
+      this.setState({portfolio: currentPortfolio})
     }
   }
+
+  handleSortStocks=(value)=> {
+    console.log(this.state.filterValue);
+  }
+
+  handleFilterStocks=(value)=> {
+    console.log(value)
+    const arr = [...this.state.stocks]
+
+    const newArr = arr.filter(stock => stock.type === value)
+    this.setState({filteredStocks: newArr})
+    console.log(this.state.filteredStocks);
+
+}
 
 componentDidMount() {
   fetch('http://localhost:3000/stocks')
@@ -37,7 +52,10 @@ componentDidMount() {
 
     return (
       <div>
-        <SearchBar/>
+        <SearchBar
+          sort={this.handleSortStocks}
+          filter={this.handleFilterStocks}
+          />
 
           <div className="row">
             <div className="col-8">

@@ -4,12 +4,12 @@ class Stock extends React.Component {
 
   handleClick= (event) => {
     // debugger
-    event.target
+    // event.target
     this.props.addToPortfolio ? this.props.addToPortfolio(this.props.stock) : this.props.sellStocks(this.props.stock)
   }
 
 render() {
-  console.log(this.props);
+  // console.log(this.props);
   return (
     <div>
 
