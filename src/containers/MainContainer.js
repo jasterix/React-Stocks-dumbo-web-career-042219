@@ -11,10 +11,14 @@ class MainContainer extends Component {
   }
 
   handleAddToPortfolio = (stock) => {
-
-    console.log(this.state.portfolio);
+    // console.log(this.state.portfolio);
     this.setState({portfolio: [...this.state.portfolio, stock]})
-    debugger
+    // debugger
+  }
+
+  removeStock=(stockObj)=> {
+    // let remove = this.state.portfolio.filter(stock=>stock.id !== stockObj.id)
+    //
   }
 
 componentDidMount() {

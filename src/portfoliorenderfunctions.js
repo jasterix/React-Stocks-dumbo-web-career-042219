@@ -1,5 +1,6 @@
 handleAddToPortfolio = (stock) => {
-  let id = 5
+  let id = stock.id
+  console.log(id);
   let portfolio = [...this.state.portfolio]
 
   let mine = portfolio.map(stock => {
@@ -11,7 +12,7 @@ handleAddToPortfolio = (stock) => {
     }
     this.setState({removed: portfolio})
   })
-  console.log(this.state);
+  // console.log(this.state);
   this.setState({portfolio:[...this.state.portfolio, stock]})
   // console.log(this.state.portfolio);
 }
