@@ -1,20 +1,18 @@
 import React from 'react';
 
-
 class SearchBar extends React.Component {
 
-  handleChange =(event) => {
+  handleChange = (event) => {
     console.log(event.target.value);
     this.props.sort(event.target.value)
   }
 
-  handleFilterTypeChange=(event) => {
+  handleFilterTypeChange = (event) => {
     this.props.filter(event.target.value);
   }
   render() {
 
-  return (
-    <div>
+    return (<div>
 
       <strong>Sort by:</strong>
       <label>
@@ -36,11 +34,8 @@ class SearchBar extends React.Component {
         </select>
       </label>
 
-
-    </div>
-  );
+    </div>);
   }
 }
-
 
 export default SearchBar;
